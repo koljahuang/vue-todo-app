@@ -68,6 +68,7 @@
           console.error(error);
         }
       },
+      // Axios.create({ withCredentials: true })是更好的选择，这样就不用自己定义headers了
       async deleteTodo(todoId) {
         try {
           await axios.delete(`http://localhost:8000/todos/${todoId}`, {
