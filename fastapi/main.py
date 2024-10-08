@@ -150,6 +150,7 @@ def register(user: UserCreate, db: db_dependency):
     db.refresh(db_user)
     access_token = create_access_token(data={"sub": db_user.username})
     return {"access_token": access_token, "token_type": "bearer"}
+    # token不要返回，前端不要存到localstorage中，后端以set-cookie的方式返回
 
 @app.post("/token", response_model=Token)
 def login_for_access_token(db: db_dependency, form_data: OAuth2PasswordRequestForm = Depends()):

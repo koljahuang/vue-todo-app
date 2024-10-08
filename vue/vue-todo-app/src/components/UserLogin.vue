@@ -34,7 +34,7 @@
           params.append('password', this.password);
   
           const response = await axios.post('http://localhost:8000/token', params);
-          localStorage.setItem('token', response.data.access_token);
+          localStorage.setItem('token', response.data.access_token); // 不要这么做，会有XSS风险
           this.$router.push('/todos');
         } catch (error) {
           console.error(error);
